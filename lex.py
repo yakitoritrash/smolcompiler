@@ -13,7 +13,9 @@ class Lexer():
             self.curChar = self.source[self.curPos]
     
     def peek(self):
-        pass
+        if self.curPos + 1 >= len(self.source):
+            return '\0'
+        return self.source[self.curPos + 1]
     
     def abort(self, message):
         pass

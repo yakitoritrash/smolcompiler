@@ -1,4 +1,5 @@
 import enum
+import sys
 
 class Lexer():
     def __init__(self, source):
@@ -20,15 +21,19 @@ class Lexer():
         return self.source[self.curPos + 1]
     
     def abort(self, message):
-        pass
+        sys.exit("Lexing error. " + message)
     
     def skipWhitespace(self):
-        pass
+        while self.curChar == ' ' or self.curChar == '\t' or self.curChar == '\r':
+            self.nextChar()
     
     def skipComment(skip):
         pass
     
     def getToken(self):
+        
+        self.skipWhitespace()
+        
         if self.curChar == '+':
             token = Token(self.curChar, TokenType.PLUS)
         elif self.curChar == '-':
@@ -42,7 +47,7 @@ class Lexer():
         elif self.curChar == '\0':
             token = Token(self.curChar, TokenType.EOF)
         else:
-            pass
+            self.abort("Unknown Token: " + self.curChar)
         
         self.nextChar() 
         return token

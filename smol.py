@@ -1,7 +1,7 @@
 from lex import *
 
 def main():
-    source = "+- */ >>= = !="
+    source = "+- */ >>= = #THis is a comment which is gonna get skipped \n !="
     lexer  = Lexer(source)
     
     token = lexer.getToken()

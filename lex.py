@@ -27,12 +27,17 @@ class Lexer():
         while self.curChar == ' ' or self.curChar == '\t' or self.curChar == '\r':
             self.nextChar()
     
-    def skipComment(skip):
-        pass
-    
+    def skipComment(self):
+        if self.curChar == '#':
+            while self.curChar != '\n':
+                self.nextChar()
+                
     def getToken(self):
         
         self.skipWhitespace()
+        self.skipComment()
+        
+        token = None
         
         if self.curChar == '+':
             token = Token(self.curChar, TokenType.PLUS)

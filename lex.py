@@ -90,6 +90,9 @@ class Lexer():
                 
             tokText = self.source[startPos : self.curPos]
             token = Token(tokText, TokenType.STRING)
+        elif self.curChar.isdigit():
+            startPos = self.curPos
+            
         else:
             self.abort("Unknown Token: " + self.curChar)
         

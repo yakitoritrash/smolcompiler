@@ -109,7 +109,12 @@ class Lexer():
             while self.peek().isalnum():
                 self.nextChar()
             
-            tokText = self
+            tokText = self.source[startPos: self.curPos + 1]
+            keyword = Token.checkIfKeyword(tokText)
+            if keyword == None:
+                token = Token(tokText, TokenType.IDENT)
+            else:
+                token = Token(tokText, keyword)
         else:
             self.abort("Unknown Token: " + self.curChar)
         

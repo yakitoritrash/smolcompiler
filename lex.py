@@ -104,6 +104,12 @@ class Lexer():
             
             tokText = self.source[startPos : self.curPos + 1]
             token = Token(tokText, TokenType.NUMBER)
+        elif self.curChar.isalpha():
+            startPos = self.curPos
+            while self.peek().isalnum():
+                self.nextChar()
+            
+            tokText = self
         else:
             self.abort("Unknown Token: " + self.curChar)
         

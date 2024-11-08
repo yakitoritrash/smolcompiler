@@ -3,7 +3,12 @@ from lex import *
 
 class Parser:
     def __init__ (self, lexer):
-        pass
+        self.lexer = lexer
+        
+        self.curToken = None
+        self.peekToken = None
+        self.nextToken()
+        self.nextToken()
     
     def checkToken(self, kind):
         return kind == self.curToken.kind

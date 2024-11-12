@@ -34,4 +34,15 @@ class Parser:
         while not self.checkToken(TokenType.EOF):
             self.statement()
             
-    def stat
+    def statement(self):
+        
+        if self.checkToken(TokenType.PRINT):
+            print("STATEMENT_PRINT")
+            self.nextToken()
+            
+            if self.checkToken(TokenType.STRING):
+                self.nextToken()
+            else:
+                self.expression()
+        
+        self.nl()

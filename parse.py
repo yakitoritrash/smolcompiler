@@ -51,7 +51,9 @@ class Parser:
                 self.match(TokenType.THEN)
                 self.nl()
                 
-                while not self
+                while not self.checkToken(TokenType.ENDIF):
+                    self.statement()
+                self.match(TokenType.ENDIF)
             else:
                 self.expression()
         

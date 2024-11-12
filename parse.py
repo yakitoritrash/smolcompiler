@@ -27,3 +27,4 @@ class Parser:
     
     def abort(self, message):
         sys.exit("Erorr: " + message)
+        

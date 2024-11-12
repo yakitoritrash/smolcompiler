@@ -42,6 +42,16 @@ class Parser:
             
             if self.checkToken(TokenType.STRING):
                 self.nextToken()
+                
+            elif self.checkToken(TokenType.IF):
+                print("STATEMENT-IF")
+                self.nextToken()
+                self.comparison()
+                
+                self.match(TokenType.THEN)
+                self.nl()
+                
+                while not self
             else:
                 self.expression()
         
